@@ -1,23 +1,32 @@
-print("User input length of pattern.")
-num=int(input())
-def pattern():
-	for j in range(num):
-		print("		* \n")
-		print("	*		*\n")
-def pat2():
-		print("	|		|\n			_  \n")
-		print("	|		|\n		/        \  \n")
-		print("	  \	  /       |\n")
-		print("		|\n			\         /   \n")
-		print("		|               _\n")
+	# coded by github.com/kennedy69
+import requests
 
-print("If you want pattern, press b. Else, press any other key.")
-a=input()
-while True:
-	if a=='b':
-		pattern()
-		break
-	else:
-		pat2()
-		break
+print("\nAnonymous Email by anonymouse.org")
+print("coded by github.com/kennedy69\n")
+to = raw_input('to: ')
+subject = raw_input('subject: ')
+message = raw_input('message: ')
+
+user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'
+sess = requests.Session()
+email_req = sess.post('http://anonymouse.org/cgi-bin/anon-email.cgi', headers={
+	'Host': 'anonymouse.org',
+	'User-Agent': user_agent,
+	'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+	'Accept-Language': 'en-US,en;q=0.5',
+	'Accept-Encoding': 'gzip, deflate',
+	'Referer': 'http://anonymouse.org/anonemail.html',
+        'Connection': 'close',
+        'Upgrade-Insecure-Requests':'1',
+        'Content-Type':'application/x-www-form-urlencoded'
+}, data={
+	'to': to,
+	'subject': subject,
+	'text': message
+})
+
+if 'The e-mail has been sent' in email_req.text:
+    print("[+] Email Sent!")
+    print("[+] In order to increase your privacy, the anonymous e-mail will be randomly delayed up to 12 hours")
+
 
