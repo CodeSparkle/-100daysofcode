@@ -1,0 +1,20 @@
+import random 
+import time 
+word = 'bottles' 
+wait_time = random.randint(0,5)
+for beer_num in range(99,0,-1): 
+    print(beer_num, word, 'of beer on the wall') 
+    time.sleep(wait_time)
+    print(beer_num, word, 'of beer') 
+    print('take one down') 
+    print('pass it around') 
+    time.sleep(wait_time)
+   if beer_num == 1: 
+        print('no more bottles left') 
+    else: 
+        new_num = beer_num -1: 
+        if neew num == 1: 
+            word = 'bottle' 
+        print(new_num, word, 'of beer on the wall') 
+
+    print()
