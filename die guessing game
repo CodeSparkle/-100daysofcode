@@ -1,0 +1,16 @@
+def dice_roll():
+    import time
+    import random
+
+    wait_time = random.randint(0, 5)
+    dice_number = random.randint(1, 10)
+    num_pic = input('pick a number from 1 to 10.Try to guess the correct number to win:')
+    num_pic = int(num_pic)
+    time.sleep(wait_time)
+    print('dice number is',dice_number)
+    while num_pic != dice_number:
+        print('try again')
+        dice_roll()
+    else:
+        print('congrats')
+print(dice_roll())
